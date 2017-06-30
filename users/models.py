@@ -1,8 +1,8 @@
-from django.db import models
+from mongoengine import *
 
-class User(models.Model):
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+class User(mongoengine.Document):
+    username = mongoengine.StringField()
+    password = mongoengine.StringField(required=True)
 
     def __unicode__(self):
         return self.username

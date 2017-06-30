@@ -14,10 +14,8 @@ def regist(req):
     if req.method == 'POST':
         uf = UserForm(req.POST)
         if uf.is_valid():
-            #获得表单数据
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
-            #添加到数据库
             User.objects.create(username= username,password=password)
             return HttpResponse('regist success!!')
     else:
