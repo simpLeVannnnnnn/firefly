@@ -1,5 +1,20 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
 
-<form method="post" enctype="multipart/form-data">
-    {{uf.as_p}}
-    <input type="submit" value="ok" />
-</form>
+{% block content %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>上传文件</title>
+</head>
+
+<body>
+    <h1>上传文件：</h1>
+    <form method="post" enctype="multipart/form-data">
+        {{obj.as_p}}
+        <input type="submit" value="提交" />
+    </form>
+
+</body>
+
+</html>
+{% endblock %}

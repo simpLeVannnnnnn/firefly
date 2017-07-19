@@ -1,8 +1,7 @@
 from django.db import models
-from mongoengine import *
 
-class File(mongoengine.Document):
-    
-    title = mongoengine.StringField(required=True)
-    url = mongoengine.FileField(upload_to = './upload/')
+class File(models.Model):
 
+    title = models.CharField(max_length = 30)
+    FileField = models.FileField(upload_to='./library/')
+    unique_name = models.CharField(max_length = 30, default='unique_name')

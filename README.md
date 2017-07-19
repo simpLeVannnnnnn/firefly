@@ -1,5 +1,5 @@
 # README
 
-- user
-- file
+- users
+- files
 - upload
