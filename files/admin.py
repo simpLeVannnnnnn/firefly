@@ -1,3 +1,4 @@
 from django.contrib import admin
+from files.models import File,Category,Tag
 
-# Register your models here.
+admin.site.register([File, Category, Tag])

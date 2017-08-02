@@ -5,6 +5,15 @@ from files.forms import FlieForm
 from files.models import File
 import os
 
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render_to_response('upload.html', {'form': form})
 
 def upload(request):
     if request.method == "POST":
@@ -17,7 +26,7 @@ def upload(request):
                 f.write(chunk)  
             f.close()
 
-            url = "/library/%s" % FileField.name
+            url = "/library/files/%s" % FileField.name
 
             return render_to_response('file_list.html',{'url':url})
     else:

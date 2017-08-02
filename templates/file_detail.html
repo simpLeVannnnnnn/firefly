@@ -1,0 +1,33 @@
+
+<head>
+    <link rel="stylesheet" href="/static/css/file-detail.css">
+</head>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<body>
+    <div>
+        <h2 class="file-detail-title">{{ file.title }}</h2>
+        <div class="file-detail-created">
+            创建时间： {{ file.created_time }}
+        </div>
+    </div>
+   
+    <div>
+        {% if file.cover %}
+            <img src="{{ file.cover.url }}" class="file-detail-img">
+        {% else %}
+            <img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg" class="file-detail-img">
+        {% endif %}
+    
+        
+        <button class="btn btn-info ">下载文件</button>
+    </div>
+</body>
+
+
+
+{% endblock %}

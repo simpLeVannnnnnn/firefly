@@ -1,48 +1,60 @@
-#coding=utf-8
+# encoding: utf-8
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
-from users.forms import UserForm
-from users.models import User
+from users.forms import UserForm, RegisterForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from files.models import File
 
 
 def regist(request):
-    if request.method == 'POST':
-        uf = UserForm(request.POST)
-        if uf.is_valid():
-            username = uf.cleaned_data['username']
-            password = uf.cleaned_data['password']
-            User.objects.create(username= username,password=password)
-            return HttpResponse('regist success!!')
-    else:
-        uf = UserForm()
-    return render_to_response('regist.html',{'uf':uf}, context_instance=RequestContext(request))
 
-def login(request):
-    if request.method == 'POST':
-        uf = UserForm(request.POST)
-        if uf.is_valid():
-            username = uf.cleaned_data['username']
-            password = uf.cleaned_data['password']
-            user = User.objects.filter(username__exact = username,password__exact = password)
-            if user:
-                response = HttpResponseRedirect('/index/')
-                response.set_cookie('username',username,3600)
-                return response
-            else:
-                return HttpResponseRedirect('/login/')
+    if request.method=='POST':
+        registerForm = RegisterForm(request.POST)
+        username=request.POST.get('username','')
+        password1=request.POST.get('password1','')
+        password2=request.POST.get('password2','')
+        email=request.POST.get('email','')
+        
+
+        filterResult=User.objects.filter(username=username)
+        if len(filterResult)>0:
+            registerForm=RegisterForm()
+            return render_to_response("regist.html",RequestContext(request,{'errors': u"用户已注册"}))
+        user=User()
+        user.username=username
+        user.set_password(password1)
+        user.email=email
+        user.save()
+
+        newUser=authenticate(username=username,password=password1)
+        if newUser is not None:
+            login(request, newUser)
+            return render_to_response('index.html',RequestContext(request))
+
+    return render_to_response('regist.html',RequestContext(request))
+
+def login_view(request):
+
+    if request.method=='POST':
+        username=request.POST.get('name',)
+        password=request.POST.get('password',)
+        user= authenticate(username=username, password=password)
+        if user is None:
+            return render_to_response('login.html',RequestContext(request,{'errors': u'您的密码有误，请重新输入'}))
+        if user.is_active:
+            login(request, user)
+            return render_to_response('index.html',RequestContext(request,{'username':username}))
     else:
         uf = UserForm()
-    return render_to_response('login.html',{'uf':uf},context_instance=RequestContext(request))
+    return render_to_response('login.html',RequestContext(request,{'uf':uf}))
 
 def index(request):
-    if request.COOKIES.get('username'):
-        username = request.COOKIES.get('username','')
-        return render_to_response('index.html' ,{'username':username})
-    return render(request, 'home.html')
+    files = File.objects.all()
+    return render(request, 'index.html', locals())
 
-def logout(request):
-    response = HttpResponseRedirect('/home/')
-    response.delete_cookie('username')
-    return response
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
 

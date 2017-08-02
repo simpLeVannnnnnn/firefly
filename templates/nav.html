@@ -2,65 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="static/css/nav.css">
-  <style>
-body {
-  background: #ededed;
-  padding: 0 20px;
-  margin: 0;
-  font-family: 'Open Sans', Arial, sans-serif;
-}
-
-h1 {
-  text-align: center;
-  margin: 80px 0;
-}
-
-.mynav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  list-style-type: none;
-  padding: 0;
-}
-
-.mynav li:not(:last-child) {
-  margin-right: 20px;
-}
-
-.mynav a {
-  display: block;
-  font-size: 20px;
-  color: black;
-  text-decoration: none;
-  padding: 7px 15px;
-}
-
-.target {
-  position: absolute;
-  border-bottom: 4px solid transparent;
-  z-index: -1;
-  -webkit-transform: translateX(-60px);
-          transform: translateX(-60px);
-}
-
-.mynav a,
-.target {
-  -webkit-transition: all .35s ease-in-out;
-  transition: all .35s ease-in-out;
-}</style>
+  <link rel="stylesheet" href="/static/css/nav.css">
 </head>
 
 <body>
 
 <nav class="mynav">
   <ul>
-    <li><a href="/home/" onclick ="WindowDialog1()">主页</a></li>
+    
+    <li><a href="/" onclick ="WindowDialog1()">主页</a></li>
     <li><a href="/login/">分类</a></li>
     <li><a href="">关于</a></li>
   </ul>
@@ -129,7 +79,7 @@ h1 {
 
 function WindowDialog1()  
         {  
-            window.location.href = "/home/";  
+            window.location.href = "/";  
         }
 
 </script>

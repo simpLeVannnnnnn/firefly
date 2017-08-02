@@ -9,10 +9,11 @@ urlpatterns = [
     url(r'^home/', 'users.views.index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^upload/', include('upload.urls')),
-    url(r'^login/$', 'users.views.login'),
+    url(r'^login/$', 'users.views.login_view'),
     url(r'^regist/$', 'users.views.regist'),
     url(r'^index/$', 'users.views.index'),
-    url(r'^logout/$', 'users.views.logout'),
+    url(r'^logout/$', 'users.views.logout_view'),
+    url(r'^files/',include('files.urls'))
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from files.models import File
 from django.http import StreamingHttpResponse
 
@@ -23,3 +23,7 @@ def big_file_download(request):
     response['Content-Disposition'] = 'attachment;filename="{0}"'.format(file_name)
 
     return response
+
+def detail(request, file_id):
+    file = get_object_or_404(File, pk=file_id)
+    return render(request, 'file_detail.html', locals())
