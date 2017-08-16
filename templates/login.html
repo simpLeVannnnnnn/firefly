@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">   
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/normalize.css">
-    <link rel="stylesheet" href="/static/css/regist.css">
+    <link rel="stylesheet" href="/static/css/login.css">
     <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <title>登陆</title>
 </head>
 {% extends "base.html" %}
 
-{% block content %}
-<html>
-
+{% block container %}
 <body>
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>登陆</title>
-    </head>
-
-    <body>
-        <h1>登陆页面：</h1>
-        <ul class="reg_ul">
+    <div class="log_div">
+        <p>登陆</p>
+        <ul class="log_ul">
         <form method="post">
             <li>
                 <span>用户名：</span>
-                <input id='username' type="text" name="username" value="" placeholder="4-8位用户名" class="reg_user">
+                <input id='username' type="text" name="username" value="" placeholder="4-8位用户名" class="log_user">
                 <span class="tip user_hint"></span>
             </li>
             <li>
                 <span>密码：</span>
-                <input id='password1' type="password" name="password1" value="" placeholder="6-16位密码" class="reg_password">
+                <input id='password' type="password" name="password" value="" placeholder="6-16位密码" class="log_password">
                 <span class="tip password_hint"></span>
             </li>
-            <input type="submit" value="登陆" />
+            <li>
+            <button class="btn btn-default submit_button" type="submit">登陆</button>
+            </li>
         </ul>
         </form>
         {% if errors %}
-                <h5> {{ errors }} </h5>
+                <h5 class="text-danger"> {{ errors }} </h5>
         {% endif %}
         
         <a href="/regist/">去注册</a>
-    </body>
-
-</html>
+    </div>
+</body>
 {% endblock %}

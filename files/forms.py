@@ -1,9 +1,11 @@
 from django import forms
-from files.models import File
+from files.models import File,Category
 
 
-class FlieForm(forms.Form):
+class FlieForm(forms.ModelForm):
 
-    title = forms.CharField(required=True)
-    FileField = forms.FileField()
+    class Meta:
+        model = File
+        fields = ('title', 'FileField', 'category', 'cover', 'version', 'bit', 'developer', 'support_system', 'language')
+
 

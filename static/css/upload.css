@@ -1,0 +1,16 @@
+.upload_div{
+  margin:auto;
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.upload_ul{
+  width: 100%;
+}
+
+.upload_ul li{
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 10px;
+}

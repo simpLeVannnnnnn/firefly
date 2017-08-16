@@ -38,14 +38,17 @@ def regist(request):
 def login_view(request):
 
     if request.method=='POST':
-        username=request.POST.get('name',)
+        username=request.POST.get('username',)
         password=request.POST.get('password',)
-        user= authenticate(username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is None:
             return render_to_response('login.html',RequestContext(request,{'errors': u'您的密码有误，请重新输入'}))
         if user.is_active:
             login(request, user)
-            return render_to_response('index.html',RequestContext(request,{'username':username}))
+            files = File.objects.all()
+            return render_to_response('index.html',RequestContext(request,{'username':username, 'file':files}))
+        else:
+            return render_to_response('login.html',RequestContext(request,{'errors': u'用户被冻结'}))
     else:
         uf = UserForm()
     return render_to_response('login.html',RequestContext(request,{'uf':uf}))

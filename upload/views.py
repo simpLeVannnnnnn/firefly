@@ -1,34 +1,35 @@
 #coding=UTF-8
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from files.forms import FlieForm
 from files.models import File
+from upload.service import handle_uploaded_file, handle_uploaded_file_cover
 import os
+
 
 def upload_file(request):
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
+        form = FlieForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/success/url/')
-    else:
-        form = UploadFileForm()
-    return render_to_response('upload.html', {'form': form})
-
-def upload(request):
-    if request.method == "POST":
-        obj = FlieForm(request.POST,request.FILES)
-        if obj.is_valid():
+            obj = File()
             
-            FileField = request.FILES.get('FileField', None)
-            f = open(os.path.join(".\\library",FileField.name),'wb+')    
-            for chunk in FileField.chunks():      
-                f.write(chunk)  
-            f.close()
+            f = request.FILES['FileField']
+            cover = request.FILES['cover']
+            handle_uploaded_file(f)
+            handle_uploaded_file_cover(cover)
+            
+            obj.title = form.cleaned_data['title']
+            obj.FileField = f
+            obj.cover = cover
+            obj.size = f.size
+            obj.unique_name = f.name
+            obj.save()
 
-            url = "/library/files/%s" % FileField.name
 
-            return render_to_response('file_list.html',{'url':url})
+            return HttpResponseRedirect('/upload/success/')
     else:
-        obj = FlieForm()
-    return render_to_response('upload.html',{'obj':obj})
+        form = FlieForm()
+    return render(request, 'upload.html', locals())
+
+def upload_success(request):
+    return render(request, 'success.html')

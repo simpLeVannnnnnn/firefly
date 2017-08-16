@@ -4,5 +4,6 @@ from upload import views
 
 
 urlpatterns = patterns('',
-    url(r'^$', views.upload, name='upload'),
+    url(r'^$', views.upload_file, name='upload'),
+    url(r'^success/$', views.upload_success, name='success'),
 )

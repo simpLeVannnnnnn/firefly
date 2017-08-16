@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="/static/css/upload.css">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <script src="/static/js/jquery-1.11.0.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
@@ -13,12 +14,52 @@
 </head>
 
 <body>
-    <h1>上传文件：</h1>
-    <form method="post" enctype="multipart/form-data">
-        {{ form }}
-        <input type="submit" value="提交" />
-    </form>
-
+    <div class="upload_div">
+        <h1>上传文件：</h1>
+        <ul class="upload_ul">
+            <form method="post" enctype="multipart/form-data">
+                 <li>
+                    <span>标题：</span>
+                    {{ form.title }}
+                </li>
+                <li>
+                    <span>分类：</span>
+                    {{ form.category }}
+                </li>
+                <li>
+                    <span>开发商：</span>
+                    {{ form.developer }}
+                </li>
+                <li>
+                    <span>支持系统：</span>
+                    {{ form.support_system }}
+                </li>
+                <li>
+                    <span>支持语言：</span>
+                    {{ form.language }}
+                </li>
+                <li>
+                    <span>版本：</span>
+                    {{ form.version }}
+                </li>
+                <li>
+                    <span>支持位数：</span>
+                    {{ form.bit }}
+                </li>
+                <li>
+                    <span>封面：</span>
+                    {{ form.cover }}
+                </li>
+                <li>
+                    <span>文件：</span>
+                    {{ form.FileField }}
+                </li>
+                <li>
+                <input type="submit" value="提交" />
+                </li>
+            </form>
+        </ul>
+    </div>
 </body>
 
 {% endblock %}
