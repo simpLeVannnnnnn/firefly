@@ -37,13 +37,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.sites',
+    #'django.contrib.sites',    
 
+    'haystack',
 
     'users',
     'upload',
     'files',
     'page',
+    'search',
+
 )
 
 
@@ -93,7 +96,15 @@ DATABASES = {
     }
 }
 
+# HAYSTACK
 
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'search.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
 
 
 # Internationalization

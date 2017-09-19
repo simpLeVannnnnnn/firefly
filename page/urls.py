@@ -1,9 +1,8 @@
 from django.conf.urls import patterns, url
-from users import views
+from page import views
 
 
 urlpatterns = patterns('',
-    url(r'^$', views, name='index'),
-
+    url(r'^(?P<tag_id>\d+)', views.tag),
 
 )

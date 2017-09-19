@@ -22,10 +22,36 @@ body {
 }
 
 /*图片列表*/
-.file-img{height: 265px; max-width: 500px;}
-.file-list{margin: 20px; padding-left: 0px; overflow:hidden;}
-.file{float: left;position: relative;margin-right: 10px;}
-.file-title{position: absolute;bottom: 30px;width: 100%;text-align: center;background: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000); color: #fff;font-size: 15px;padding: 3px 0;}
+.file-img{
+	height: 265px; 
+	max-width: 500px;
+}
+.file-list{
+	margin: 20px auto; 
+	padding-left: 0px; 
+	overflow:hidden;
+}
+.file{
+	float: left;
+    margin: 0 0 20px 20px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #fff;
+}
+.file-title{
+	position: absolute;
+	bottom: 30px;
+	width: 100%;
+	text-align: center;
+	background: rgba(0,0,0,0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000); 
+	color: #fff;
+	font-size: 15px;
+	padding: 3px 0;
+}
 
 /*分页样式*/
 .fydiv{width: 320px;text-align: center;height: 30px;margin: 0 auto;margin-top: 30px;}

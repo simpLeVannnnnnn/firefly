@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, Http404
-from files.models import File
+from files.models import File, Tag
 from django.http import StreamingHttpResponse, HttpResponse
 import os
 
@@ -36,3 +36,5 @@ def file_download(request, file_id):
 def detail(request, file_id):
     file = get_object_or_404(File, pk=file_id)
     return render(request, 'file_detail.html', locals())
+
+

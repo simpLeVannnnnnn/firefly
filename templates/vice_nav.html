@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/vice-nav.css">
+</head>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div >
+            <ul class="vice-nav-ul">
+                <span class="sortTitle">分类导航</span>
+                {% for tag in tags  %}
+                <li class="vice-nav-li">
+                <a href='/tag/{{ tag.id }}' class=".vice-nav-a">{{ tag.name }}</a>
+                </li>
+                {% endfor %}
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</html>

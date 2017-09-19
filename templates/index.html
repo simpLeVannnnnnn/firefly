@@ -1,16 +1,37 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <script src="/static/js/jquery-1.11.0.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
 </head>
 {% extends "base.html" %}
 
-{% block content %}
+{% block container %}
 
 <body>
-    <h2 class="text-center" style="margin-bottom: 20px;">文件推送</h2>
-    {% include 'file_list.html' %}
+    <div class="container">
+        <div class="col left-column">
+                {% include 'vice_nav.html' %}
+        </div>
+
+        <div class="col middle-column">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                        {% if category %}<h2 class="" style="margin-bottom: 20px;">  {{ category.name }} </h2>{% endif %}
+                    
+                        
+                        {% if tag %} <h1 class="text-center" style="margin-bottom: 20px;">  {{ tag.name }} </h1>{% endif %}
+
+                    
+                    {% include 'file_list.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
     
 </body>
 

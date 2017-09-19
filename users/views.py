@@ -5,7 +5,7 @@ from django.template import RequestContext
 from users.forms import UserForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from files.models import File
+from files.models import File, Tag
 
 
 def regist(request):
@@ -31,7 +31,7 @@ def regist(request):
         newUser=authenticate(username=username,password=password1)
         if newUser is not None:
             login(request, newUser)
-            return render_to_response('index.html',RequestContext(request))
+            return render_to_response('home.html',RequestContext(request))
 
     return render_to_response('regist.html',RequestContext(request))
 
@@ -46,18 +46,15 @@ def login_view(request):
         if user.is_active:
             login(request, user)
             files = File.objects.all()
-            return render_to_response('index.html',RequestContext(request,{'username':username, 'file':files}))
+            return render_to_response('home.html',RequestContext(request,{'username':username, 'file':files}))
         else:
             return render_to_response('login.html',RequestContext(request,{'errors': u'用户被冻结'}))
     else:
         uf = UserForm()
     return render_to_response('login.html',RequestContext(request,{'uf':uf}))
 
-def index(request):
-    files = File.objects.all()
-    return render(request, 'index.html', locals())
 
 def logout_view(request):
     logout(request)
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
