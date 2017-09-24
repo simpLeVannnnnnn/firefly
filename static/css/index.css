@@ -11,4 +11,7 @@
 .middle-column {
     width: 66%;
 }
-
+.page-pagination {
+    text-align:center;
+    margin: 20px auto;
+}

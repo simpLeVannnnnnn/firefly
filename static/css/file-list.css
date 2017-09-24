@@ -64,3 +64,9 @@ body {
 .numb{width: 26px;}
 .choose{border:1px solid #357973!important;}
 .choose a{color: #357973!important;}
+
+
+.pagination{
+	float: bottom;
+
+}

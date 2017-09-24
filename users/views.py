@@ -31,7 +31,9 @@ def regist(request):
         newUser=authenticate(username=username,password=password1)
         if newUser is not None:
             login(request, newUser)
-            return render_to_response('home.html',RequestContext(request))
+            files = File.objects.all()
+            tags = Tag.objects.all()
+            return render_to_response('home.html',RequestContext(request), locals())
 
     return render_to_response('regist.html',RequestContext(request))
 
@@ -46,7 +48,9 @@ def login_view(request):
         if user.is_active:
             login(request, user)
             files = File.objects.all()
-            return render_to_response('home.html',RequestContext(request,{'username':username, 'file':files}))
+            tags = Tag.objects.all()
+            return render(request, 'home.html', locals())
+            # return render_to_response('home.html',RequestContext(request,{'username':username, 'file':files}))
         else:
             return render_to_response('login.html',RequestContext(request,{'errors': u'用户被冻结'}))
     else:
@@ -56,5 +60,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'home.html')
+    files = File.objects.all()
+    tags = Tag.objects.all()
+    return render(request, 'home.html', locals())
 

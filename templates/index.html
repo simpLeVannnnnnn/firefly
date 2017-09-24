@@ -1,8 +1,5 @@
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script src="/static/js/jquery-1.11.0.min.js"></script>
-	<script src="/static/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="/static/css/index.css">
 
 </head>
@@ -19,15 +16,35 @@
         <div class="col middle-column">
             <div class="panel panel-default">
                 <div class="panel-body">
-
-                        {% if category %}<h2 class="" style="margin-bottom: 20px;">  {{ category.name }} </h2>{% endif %}
-                    
                         
-                        {% if tag %} <h1 class="text-center" style="margin-bottom: 20px;">  {{ tag.name }} </h1>{% endif %}
+                        <ol class="breadcrumb">
+                            {% if category %}<li><span>{{ category.name }}</span></li>{% endif %}
+                            {% if tag %}<li ><span>{{ tag.name }} </span></li>{% endif %}
+                        </ol>
+                        {% comment %} {% if category %}<h2 class="" style="margin-bottom: 20px;">  {{ category.name }} </h2>{% endif %}
+                        
+                        {% if tag %} <h1 class="text-center" style="margin-bottom: 20px;">  {{ tag.name }} </h1>{% endif %} {% endcomment %}
 
-                    
                     {% include 'file_list.html' %}
-                </div>
+                    
+                    
+                    <div class="page-pagination">
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if files.has_previous %}
+                                    <a class="btn btn-default" href="?page={{ files.previous_page_number }}">前一页</a>
+                                {% endif %}
+                        
+                                <span class="current">
+                                    第 {{ files.number }} 页，共 {{ files.paginator.num_pages }}页.
+                                </span>
+                        
+                                {% if files.has_next %}
+                                    <a class="btn btn-default" href="?page={{ files.next_page_number }}">后一页</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
