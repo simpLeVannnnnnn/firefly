@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^regist/$', 'users.views.regist'),
     url(r'^index/$', 'page.views.index'),
     url(r'^about/$', 'page.views.about'),
+    url(r'^highscore/$', 'page.views.high_score'),
     url(r'^picture/$', 'page.views.picture'),
     url(r'^info/$', 'page.views.info'),
     url(r'^application/$', 'page.views.application'),

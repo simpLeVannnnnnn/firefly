@@ -10,51 +10,67 @@
 
 <body>
     <div>
+        <ol class="breadcrumb">
+            <li><span>{{ file.category.name }}</span></li>
+            <li ><span>{{ file.tag.name }} </span></li>
+            <li ><span>{{ file.title }} </span></li>
+        </ol>
+    </div>
+        
+    <div>
         <h2 class="file-detail-title">{{ file.title }}</h2>
         <div class="text-right">
             下载次数： {{ file.amount_of_downloads }}
         </div>
+        <div class="file-detail-introduction">
+            介绍： {{ file.introduction }}
+        </div>
         <div class="file-detail-info">
-            <li>
-                创建时间： {{ file.created_time }}
-            </li>
-            <li>
-                分类： {{ file.category }}
-            </li>
-            <li>
-                更新时间： {{ file.updata_time }}
-            </li>
-            <li>
-                大小： {{ file.size }} B
-            </li>
-            <li>
-                开发者： {{ file.developer }}
-            </li>
-            <li>
-                支持系统： {{ file.support_system }}
-            </li>
-            <li>
-                支持位数： {{ file.bit }}
-            </li>
-            <li>
-                语言： {{ file.language }}
-            </li>
-            <li>
-                评分： {{ file.score }}
-            </li>
+            <ul class="list-unstyled">
+                <li>
+                    创建时间： {{ file.created_time }}
+                </li>
+                <li>
+                    分类： {{ file.category }}
+                </li>
+                <li>
+                    更新时间： {{ file.updata_time }}
+                </li>
+                <li>
+                    大小： {{ file.size }} B
+                </li>
+                <li>
+                    开发者： {{ file.developer }}
+                </li>
+                <li>
+                    支持系统： {{ file.support_system }}
+                </li>
+                <li>
+                    支持位数： {{ file.bit }}
+                </li>
+                <li>
+                    语言： {{ file.language }}
+                </li>
+                <li>
+                    评分： {{ file.score }}
+                </li>
+            </ul>
         </div>
     </div>
 
    
     <div>
-        预览：
+        
         {% if file.cover %}
             <img src="{{ file.cover.url }}" class="file-detail-img">
         {% else %}
             <img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg" class="file-detail-img">
         {% endif %}
+        
 
     </div>
+    <div class="file-detail-preview"><span>预览</span></div>
+    
     {% comment %} <button class="btn btn-info " onclick="window.open('/files/download/{{ file.id }}')" >下载文件</button> {% endcomment %}
     <a class="btn btn-info" href="/library/library/files/{{ file.unique_name }}">下载 </a>
 </body>

@@ -3,6 +3,16 @@
 }
 
 .file-detail-img{
-    max-height: 1024px; 
-    max-width: 960px;
+    max-height: 100%; 
+    max-width: 100%;
+    text-align:center;
+}
+
+.file-detail-info li{
+    margin: 2px 0px 2px 45px;
+}
+
+.file-detail-preview {
+    margin: 20px 0px 0px 0px;
+    text-align:center;
 }

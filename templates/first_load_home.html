@@ -15,7 +15,7 @@
 
 <body>
 
-    <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
+    {% comment %} <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
     <div id="loader-wrapper">
         
         <div id="loader"></div>
@@ -23,23 +23,24 @@
         <div class="loader-section section-right"></div>
     
     </div>
-    <!-- end -->
+    <!-- end --> {% endcomment %}
 
-    <div class="container wowload fadeInUp">
+    {% comment %} <div class="container wowload fadeInUp">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="home-content">
                     <h2 class="text-center">热点</h2>
                     <div>
-                        {% include 'file_list.html' %}
-                        <div>
-                            <a class="home-more" href="">更多>></a>
-                        </div>
+                    <a class="home-more" href="">更多>></a>
                     </div>
+                    <div>
+                        {% include 'file_list.html' %}
+                    </div>
+                    
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     
     
     
@@ -49,32 +50,34 @@
                 <div class="home-content">
                     <h2 class="text-center">评分最高</h2>
                     <div>
-                        {% include 'file_list.html' %}
-                        <div>
-                            <a class="home-more" href="">更多>></a>
-                        </div>
+                        <a class="home-more" href="">更多>></a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        
-    <div class="container wowload fadeInUp">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="home-content">
-                    <h2 class="text-center">收藏最多</h2>
                     <div>
                         {% include 'file_list.html' %}
-                        <div>
-                            <a class="home-more" href="">更多>></a>
-                        </div>
                     </div>
                     
                 </div>
             </div>
         </div>
     </div>
+        
+   <div class="container wowload fadeInUp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="home-content">
+                    <h2 class="text-center">收藏最多</h2>
+                    <div>
+                        <a class="home-more" href="">更多>></a>
+                    </div>
+                    <div>
+                        {% include 'file_list.html' %}
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
 
     <div class="container wowload fadeInUp">
         <div class="panel panel-default">
@@ -82,16 +85,67 @@
                 <div class="home-content">
                     <h2 class="text-center">图片类</h2>
                     <div>
+                        <a class="home-more" href="/picture/">更多>></a>
+                    </div>
+                    <div>
                         {% include 'file_list.html' %}
-                        <div>
-                            <a class="home-more" href="">更多>></a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">软件类</h2>
+                        <div>
+                            <a class="home-more" href="/application/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">文档类</h2>
+                        <div>
+                            <a class="home-more" href="/document/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">信息类</h2>
+                        <div>
+                            <a class="home-more" href="/info/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
 
 </body>
 

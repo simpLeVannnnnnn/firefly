@@ -1,3 +1,5 @@
 .background {
     background-color: #e9e7ef;
 }
+.gototop{position: fixed;bottom: 20px; right: 20px;background: rgba(0,0,0,0.5);padding: 10px;color: #fff;}
+.gototop i{line-height: 0.5em;}

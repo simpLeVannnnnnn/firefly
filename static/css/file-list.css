@@ -53,20 +53,45 @@ body {
 	padding: 3px 0;
 }
 
-/*分页样式*/
-.fydiv{width: 320px;text-align: center;height: 30px;margin: 0 auto;margin-top: 30px;}
-.fenye{text-align: center;height: 30px;margin: 0 auto;}
-.fenye li{float: left;border:1px solid #6CBFB7;height: 26px;line-height: 26px;margin-right: 10px;}
-.fenye li:hover{background-color: #f1f1f1;}
-.fenye li a{text-decoration: none;color:#6CBFB7; display: block; }
-.prev{width: 66px;}
-.next{width: 66px;}
-.numb{width: 26px;}
-.choose{border:1px solid #357973!important;}
-.choose a{color: #357973!important;}
+img.file-img {
+    position: relative;
+    max-width: 100%;
+    min-width: 360px;
+    opacity: 1;
+    max-height: 100%;
+    min-height: 300px;
+}
 
-
+figure.effect-oscar.wowload.animated {
+	float: left;
+    margin: 0 0 0px 0px;
+    width: 360px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #b5e4f3;
+}
 .pagination{
 	float: bottom;
-
 }
+
+#works{padding-top:2em;}
+#works figcaption a{border:1px solid #fff;margin-top: 1em;display: inline-block;color: #fff;padding: 0 2em;}
+#works figcaption a:hover{text-decoration: none;padding: 0 3em;}
+
+@media (max-width: 1200px) {
+	.grid figure h2{font: 700 1.5em Roboto,Arial,Helvetica;}
+	figure.effect-oscar figcaption{padding: 12%;}
+	figure.effect-oscar figcaption::before,figure.effect-chico figcaption::before{top: 20px;right: 20px;bottom: 20px;left: 20px;}
+}
+@media (max-width: 900px) {
+figure.effect-chico figcaption {padding: 2em;}	
+figure.effect-oscar figcaption {padding: 20%;}
+figure.effect-chico figcaption::before{top: 10px;right: 10px;bottom: 10px;left: 10px;}
+.grid figure.effect-chico p{font-size: 0.6em;line-height: 1.5em;}	
+}
+@media (max-width: 767px) {
+	#works {padding-top: 5em;}
+	figure.effect-chico figcaption {padding: 1.5em;}
+}	

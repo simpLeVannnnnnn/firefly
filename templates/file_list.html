@@ -6,7 +6,7 @@
   </head>
 <body>
 
-<div class="file-list">
+{% comment %} <div class="file-list">
   {% for file in files  %}
     <div class="file">
       <a href='/files/{{ file.id }}'>
@@ -19,8 +19,38 @@
       <p><span class="file-title">{{ file.title }}</span></p>
     </div>
   {% endfor %}
+</div> {% endcomment %}
 
+<div id="works" class="grid ">
+  {% for file in files  %}
+	<figure class="effect-oscar wowload ">
+			{% if file.cover %}
+			<img src="{{ file.cover.url }}"  alt="img01" class="file-img"/>
+			{% else %}
+			<img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg"  alt="img01" class="file-img">
+			{% endif %}
+      <figcaption>
+          <h2>{{ file.title }}</h2>
+          <p>{{ file.introduction }}<br>
+          <a href="/files/{{ file.id }}"}>更多信息</a></p>            
+      </figcaption>
+    </figure>
+  {% endfor %}
 </div>
+
+
+
+{% comment %} <div id="works" class="grid ">
+  <figure class="effect-oscar wowload">
+      <img src="/library/library/files/cover/test.jpg"  alt="img01"/>
+      <figcaption>
+          <h2>Nature</h2>
+          <p>Lily likes to play with crayons and pencils<br>
+          <a href="#">更多信息</a></p>            
+      </figcaption>
+  </figure>
+</div>
+</div> {% endcomment %}
 
 {% comment %} <script type="text/javascript"> 
   getPage(1);
