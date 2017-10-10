@@ -76,7 +76,7 @@ figure.effect-oscar.wowload.animated {
 	float: bottom;
 }
 
-#works{padding-top:2em;}
+#works{padding-top:2em; padding-left:1em;}
 #works figcaption a{border:1px solid #fff;margin-top: 1em;display: inline-block;color: #fff;padding: 0 2em;}
 #works figcaption a:hover{text-decoration: none;padding: 0 3em;}
 

@@ -6,6 +6,6 @@ class FlieForm(forms.ModelForm):
 
     class Meta:
         model = File
-        fields = ('title', 'FileField', 'category', 'cover', 'version', 'bit', 'developer', 'support_system', 'language')
+        fields = ('title', 'FileField', 'category', 'cover', 'version', 'bit', 'developer', 'support_system', 'language', 'introduction')
 
 

@@ -1,4 +1,0 @@
-{{ object.title }}
-{{ object.introduction }}
-{{ object.developer }}
-{{ object.support_system }}

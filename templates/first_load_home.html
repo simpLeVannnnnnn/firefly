@@ -11,6 +11,8 @@
     <script src="/static/js/preloader.js"></script>
     <link rel="stylesheet" href="/static/css/first-load-home.css">
     <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/file-list.css">
+
 </head>
 
 <body>
@@ -53,7 +55,22 @@
                         <a class="home-more" href="">更多>></a>
                     </div>
                     <div>
-                        {% include 'file_list.html' %}
+                        <div id="works" class="grid ">
+                            {% for file in high_score_files  %}
+                              <figure class="effect-oscar wowload ">
+                                      {% if file.cover %}
+                                      <img src="{{ file.cover.url }}"  alt="img01" class="file-img"/>
+                                      {% else %}
+                                      <img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg"  alt="img01" class="file-img">
+                                      {% endif %}
+                                <figcaption>
+                                    <h2>{{ file.title }}</h2>
+                                    <p>{{ file.introduction }}<br>
+                                    <a href="/files/{{ file.id }}"}>更多信息</a></p>            
+                                </figcaption>
+                              </figure>
+                            {% endfor %}
+                          </div>
                     </div>
                     
                 </div>

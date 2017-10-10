@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.introduction }}
+{{ object.developer }}
+{{ object.support_system }}
+{{ object.language }}
+{{ object.text }}

@@ -106,6 +106,10 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor' # update index
+
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

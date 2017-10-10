@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^logout/$', 'users.views.logout_view'),
     url(r'^files/',include('files.urls')),
     url(r'^tag/',include('page.urls')),
-    url(r'^search/',include('haystack.urls')),
+    url(r'^search/',include('search.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

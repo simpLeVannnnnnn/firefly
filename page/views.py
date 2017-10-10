@@ -6,6 +6,15 @@ from files.models import File, Tag, Category
 def home(request):
     files = File.objects.all()
     tags = Tag.objects.all()
+
+    high_score_files = File.objects.order_by('-score', 'title')
+
+    paginator1 = Paginator(high_score_files, 9)
+    high_score_files = paginator1.page(1)
+
+    paginator2 = Paginator(files, 9)
+    files = paginator2.page(1)
+
     return render(request, 'first_load_home.html', locals())
 
 def about(request):

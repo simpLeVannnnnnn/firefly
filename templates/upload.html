@@ -13,50 +13,61 @@
 
 <body>
     <div class="upload_div">
-        <h1>上传文件：</h1>
-        <ul class="upload_ul">
-            <form method="post" enctype="multipart/form-data">
-                 <li>
-                    <span>标题：</span>
-                    {{ form.title }}
-                </li>
-                <li>
-                    <span>分类：</span>
-                    {{ form.category }}
-                </li>
-                <li>
-                    <span>开发商：</span>
-                    {{ form.developer }}
-                </li>
-                <li>
-                    <span>支持系统：</span>
-                    {{ form.support_system }}
-                </li>
-                <li>
-                    <span>支持语言：</span>
-                    {{ form.language }}
-                </li>
-                <li>
-                    <span>版本：</span>
-                    {{ form.version }}
-                </li>
-                <li>
-                    <span>支持位数：</span>
-                    {{ form.bit }}
-                </li>
-                <li>
-                    <span>封面：</span>
-                    <div class="upload-input">{{ form.cover }}</div>
-                </li>
-                <li>
-                    <span>文件：</span>
-                    <div class="upload-input">{{ form.FileField }}</div>
-                </li>
-                <li>
-                <input type="submit" value="提交" />
-                </li>
+        
+        <div class="bootstrap-frm">
+            <h1>上传文件：
+            <span>请填写详细内容</span>
+            </h1>
+            
+            <form method="post" enctype="multipart/form-data"></form>
+                <ul class="upload_ul">
+                    <li>
+                        <span>标题：</span>
+                        {{ form.title }}
+                    </li>
+                    <li>
+                        <span>分类：</span>
+                        {{ form.category }}
+                    </li>
+                    <li>
+                        <span>简介：</span>
+                        {{ form.introduction }}
+                    </li>
+                    <li>
+                        <span>开发商：</span>
+                        {{ form.developer }}
+                    </li>
+                    <li>
+                        <span>支持系统：</span>
+                        {{ form.support_system }}
+                    </li>
+                    <li>
+                        <span>支持语言：</span>
+                        {{ form.language }}
+                    </li>
+                    <li>
+                        <span>版本：</span>
+                        {{ form.version }}
+                    </li>
+                    <li>
+                        <span>支持位数：</span>
+                        {{ form.bit }}
+                    </li>
+                    
+                    <li>
+                        <span>封面：</span>
+                        <div class="uploader">{{ form.cover }}</div>
+                    </li>
+                    <li>
+                        <span>文件：</span>
+                        <div class="uploader">{{ form.FileField }}</div>
+                    </li>
+                    <li>
+                    <input type="submit" value="提交" />
+                    </li>
+                </ul>
             </form>
-        </ul>
+        </div>
     </div>
 </body>
 
