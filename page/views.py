@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from files.models import File, Tag, Category
 
@@ -21,7 +21,21 @@ def about(request):
     return render(request, 'about.html')
 
 def high_score(request):
-    return render(request, 'high_score.html')
+
+    files = File.objects.order_by('-score', 'title')
+    tags = Tag.objects.all()
+
+    paginator = Paginator(files, 5)
+    page = request.GET.get('page')
+    try:
+        files = paginator.page(page)
+    except PageNotAnInteger:
+        files = paginator.page(1)
+    except EmptyPage:
+        files = paginator.page(paginator.num_pages)
+
+    return render(request, 'high_score.html', locals())
+
 
 def tag(request, tag_id):
     tag = get_object_or_404(Tag, pk=tag_id)
@@ -45,7 +59,7 @@ def index(request):
     files = File.objects.all()
     tags = Tag.objects.all()
 
-    paginator = Paginator(files, 12)
+    paginator = Paginator(files, 5)
     page = request.GET.get('page')
     try:
         files = paginator.page(page)
@@ -62,7 +76,7 @@ def picture(request):
     files = File.objects.filter(category=category)
     tags = Tag.objects.filter(category=category)
 
-    paginator = Paginator(files, 12)
+    paginator = Paginator(files, 5)
     page = request.GET.get('page')
     try:
         files = paginator.page(page)
@@ -78,7 +92,7 @@ def info(request):
     files = File.objects.filter(category=category)
     tags = Tag.objects.filter(category=category)
     
-    paginator = Paginator(files, 12)
+    paginator = Paginator(files, 5)
     page = request.GET.get('page')
     try:
         files = paginator.page(page)
@@ -93,7 +107,7 @@ def application(request):
     files = File.objects.filter(category=category)
     tags = Tag.objects.filter(category=category)
 
-    paginator = Paginator(files, 12)
+    paginator = Paginator(files, 5)
     page = request.GET.get('page')
     try:
         files = paginator.page(page)
@@ -108,7 +122,7 @@ def document(request):
     files = File.objects.filter(category=category)
     tags = Tag.objects.filter(category=category)
 
-    paginator = Paginator(files, 12)
+    paginator = Paginator(files, 5)
     page = request.GET.get('page')
     try:
         files = paginator.page(page)

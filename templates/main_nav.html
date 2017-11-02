@@ -2,12 +2,10 @@
 <html>
 
 <head>
-    <script src="/static/js/jquery-1.11.0.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/css/main-nav.css">
 </head>
 
-     <nav class="navbar navbar-default" role="navigation">
+     <nav class="navbar navbar-default navbar-height" role="navigation">
         <div class="container-fluid">
             <div class="navbar-left">
                 <a class="navbar-brand" href="/">资源分享平台</a>
@@ -33,18 +31,18 @@
                 </ul>
             </div>
 
-            <form class="navbar-form navbar-right" role="search">
+            <form method="get" class="navbar-form navbar-right" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="搜索关键词..">
-                <button id="search" type="button" class="btn btn-default" >搜索</button>
+                {% comment %} <input type="text" class="form-control" placeholder="搜索关键词.."> {% endcomment %}
+                <button id="search" type="button" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span>搜索</button>
               </div>
             </form>
             {% if request.user.is_authenticated %}
             <div class="nav navbar-nav navbar-right">
-                <ol class="breadcrumb">
-                    <li><a style="color:#666">{{request.user.username}} </a></li>
-                    {% if request.user.is_superuser %}<li><a href="/upload/" style="color:#666">上传文件</a></li>{% endif %}
-                    <li><a href="/logout/" style="color:#666">退出</a></li>
+                <ol class="breadcrumb user-info-padding">
+                    <li><p class="user-info" >{{request.user.username}} </p></li>
+                    {% if request.user.is_superuser %}<li><a href="/upload/" class="user-info">上传文件</a></li>{% endif %}
+                    <li><a href="/logout/" class="user-info">退出</a></li>
                    
                 </ol>
             <div>

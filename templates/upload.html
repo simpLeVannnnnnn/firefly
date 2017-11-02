@@ -21,6 +21,7 @@
             
             <form method="post" enctype="multipart/form-data"></form>
                 <ul class="upload_ul">
+                    
                     <li>
                         <span>标题：</span>
                         {{ form.title }}
@@ -28,6 +29,10 @@
                     <li>
                         <span>分类：</span>
                         {{ form.category }}
+                    </li>
+                    <li>
+                        <span>标签：</span>
+                        {{ form.tag }}
                     </li>
                     <li>
                         <span>简介：</span>

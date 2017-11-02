@@ -3,5 +3,5 @@ from haystack.views import SearchView
 from search.views import MySeachView
 
 urlpatterns = [
-    url(r'^$', SearchView(), name='haystack_search'),
+    url(r'^$', MySeachView(), name='haystack_search'),
 ]

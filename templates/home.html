@@ -1,25 +1,167 @@
-
 {% extends "base.html" %}
 
-{% block content %}
+
+{% block container %}
+
 
 <head>
-        <link rel="stylesheet" href="/static/css/home.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/static/js/preloader.js"></script>
+    <link rel="stylesheet" href="/static/css/first-load-home.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/file-list.css">
+
 </head>
 
 <body>
 
-    <div class="">
-        <div class="home-content">
-            <h2 class="text-center">推送</h2>
-            <div class="">
-                {% include 'file_list.html' %}
+    <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
+    <div id="loader-wrapper">
+        
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    
+    </div>
+    <!-- end --> 
+     <div class="container wowload fadeInUp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="home-content">
+                    <h2 class="text-center">热点</h2>
+                    <div>
+                    <a class="home-more" href="">更多>></a>
+                    </div>
+                    <div>
+                        {% include 'file_list.html' %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+    
+    <div class="container wowload fadeInUp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="home-content">
+                    <h2 class="text-center">评分最高</h2>
+                    <div>
+                        <a class="home-more" href="">更多>></a>
+                    </div>
+                    <div>
+                        <div id="works" class="grid ">
+                            {% for file in high_score_files  %}
+                              <figure class="effect-oscar wowload ">
+                                      {% if file.cover %}
+                                      <img src="{{ file.cover.url }}"  alt="img01" class="file-img"/>
+                                      {% else %}
+                                      <img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg"  alt="img01" class="file-img">
+                                      {% endif %}
+                                <figcaption>
+                                    <h2>{{ file.title }}</h2>
+                                    <p>{{ file.introduction }}<br>
+                                    <a href="/files/{{ file.id }}"}>更多信息</a></p>            
+                                </figcaption>
+                              </figure>
+                            {% endfor %}
+                          </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
-    
-   
-    
+        
+   {% comment %} <div class="container wowload fadeInUp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="home-content">
+                    <h2 class="text-center">收藏最多</h2>
+                    <div>
+                        <a class="home-more" href="">更多>></a>
+                    </div>
+                    <div>
+                        {% include 'file_list.html' %}
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>  {% endcomment %}
+
+    <div class="container wowload fadeInUp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="home-content">
+                    <h2 class="text-center">图片类</h2>
+                    <div>
+                        <a class="home-more" href="/picture/">更多>></a>
+                    </div>
+                    <div>
+                        {% include 'file_list.html' %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">软件类</h2>
+                        <div>
+                            <a class="home-more" href="/application/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">文档类</h2>
+                        <div>
+                            <a class="home-more" href="/document/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container wowload fadeInUp">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="home-content">
+                        <h2 class="text-center">信息类</h2>
+                        <div>
+                            <a class="home-more" href="/info/">更多>></a>
+                        </div>
+                        <div>
+                            {% include 'file_list.html' %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
 </body>
 
 </html>

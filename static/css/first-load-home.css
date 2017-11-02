@@ -152,3 +152,79 @@
     .no-js h1 {
         color: #222222;
     }
+
+
+
+
+
+
+#owl-carousel {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#owl-carousel .item {
+    display: block;
+}
+#owl-carousel img {
+    display: block;
+    width: 900px;
+    height: 328px;
+}
+
+
+.home-search {
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 40px;
+    margin: 20px auto 0;
+    padding: 0px 0 0 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+
+
+.home-searchbtn {
+    display: block;
+    position: relative;
+    left: 390px;
+    top: -40px;
+    width: 100px;
+    height: 40px;
+    margin: 0px auto 0;
+}
+
+a.home-index1{
+    font-size: 24px;
+    position: relative;
+    left: 23px;
+    top: -38px;
+    margin: 0px 0 0px 94px;
+    font-family:思源黑体,sans-serif,宋体;
+    color:#333;
+}
+
+a.home-index2{
+    font-size: 24px;
+    position: relative;
+    left: -47px;
+    top: 139px;
+    margin: 0px 0 0px 94px;
+    font-family:sans-serif,宋体;
+    color:#333;
+}
+
+.background {
+    background-image: url(/library/img/bg3.jpg);
+}

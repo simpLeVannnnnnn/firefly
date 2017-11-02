@@ -1,29 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 
-<h2>Search</h2>
 
-<form method="get" action=".">
+<head>
+    <link rel="stylesheet" href="/static/css/search.css">
+</head>
+ 
+<h2><span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索关键词</h2>
+
+<form method="get" action="." class="" role="search">
     <table>
-        {{ form.as_table }}
-        <tr>
-            <td>&nbsp;</td>
-            <td>
-                <input type="submit" value="Search">
-            </td>
-        </tr>
+        {{ form.q }}
+        <input type="submit" value="搜索">
     </table>
 
     {% if query %}
-        <h3>Results</h3>
-
+        <h3>查找结果</h3>
+        
         {% for result in page.object_list %}
-            <p>
-                <a href="/files/{{ result.object.id }}">{{ result.object.title }}</a>
-            </p>
+            <div>
+                {% if result.object.cover %}
+                <a href="/files/{{ result.object.id }}"><img class="file-img" src="{{ result.object.cover.url }}"  alt="img01" class="file-img"/></a>
+                {% else %}
+                <a href="/files/{{ result.object.id }}"><img class="file-img" src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg"  alt="img01" class="file-img"></a>
+                {% endif %}
+                <a class='file-title' href="/files/{{ result.object.id }}">{{ result.object.title }}</a>
+                <a href="/files/{{ result.object.id }}"><p class='file-introduction'>{{ result.object.introduction }}</p></a>
+            </div>
         {% empty %}
-            <p>No results found.</p>
+            <p>未找到结果.</p>
         {% endfor %}
 
         {% if page.has_previous or page.has_next %}

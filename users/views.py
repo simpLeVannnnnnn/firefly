@@ -33,7 +33,7 @@ def regist(request):
             login(request, newUser)
             files = File.objects.all()
             tags = Tag.objects.all()
-            return render_to_response('home.html',RequestContext(request), locals())
+            return render_to_response('first_load_home.html',RequestContext(request), locals())
 
     return render_to_response('regist.html',RequestContext(request))
 
@@ -49,7 +49,7 @@ def login_view(request):
             login(request, user)
             files = File.objects.all()
             tags = Tag.objects.all()
-            return render(request, 'home.html', locals())
+            return render(request, 'first_load_home.html', locals())
             # return render_to_response('home.html',RequestContext(request,{'username':username, 'file':files}))
         else:
             return render_to_response('login.html',RequestContext(request,{'errors': u'用户被冻结'}))
@@ -62,5 +62,5 @@ def logout_view(request):
     logout(request)
     files = File.objects.all()
     tags = Tag.objects.all()
-    return render(request, 'home.html', locals())
+    return render(request, 'first_load_home.html', locals())
 

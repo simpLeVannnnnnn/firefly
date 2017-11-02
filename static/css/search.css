@@ -1,0 +1,25 @@
+img.file-img {
+    position: relative;
+	width: 180px;
+    opacity: 1;
+    height: 162px;
+}
+a.file-title{
+    margin: 15px;
+    color: black;
+    font-size: 20px;
+    position: relative;
+    top: -58px;
+}
+p.file-introduction{
+    margin: 15px;
+    color: black;
+    position: relative;
+    left: 180px;
+    top: -130px;
+    width: 820px;
+}
+
+input[type="submit"] {
+    margin: 0px 0 0 36px;
+}
