@@ -68,8 +68,16 @@ img.file-img {
     height: 18px;
     background-color: #fff3af
 }
+.file-delete{
+	float: left;
+	top: 46px;
+	left: 60px;
+	position: relative;
+	margin: 20px;
+}
 
 figure.effect-oscar.wowload.animated {
+	left: 60px;
 	float: left;
     margin: 15px;
     width: 644px;

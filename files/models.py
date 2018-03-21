@@ -24,9 +24,9 @@ class File(models.Model):
     title = models.CharField(max_length = 30)
     category = models.ForeignKey(Category, blank=True, null=True)
     tag = models.ForeignKey(Tag, blank=True, null=True)
-    introduction = models.TextField('简介',max_length = 250, blank=True, null=True)
+    introduction = models.TextField('简介',max_length = 200, blank=True, null=True)
     FileField = models.FileField('文件',upload_to='./library/files/')
-    unique_name = models.CharField(max_length = 30, default='unique_name')
+    unique_name = models.CharField(max_length = 100, default='unique_name')
     created_time = models.DateTimeField('创建时间', auto_now_add=True)
     updata_time = models.DateTimeField('更新时间', auto_now=True)
     author = models.CharField(max_length = 30, default='admin')
@@ -39,6 +39,9 @@ class File(models.Model):
     support_system = models.CharField('支持系统', max_length = 30, null=True, blank=True)
     language = models.CharField('语言', max_length = 30, null=True, blank=True)
     score = models.CharField('评分', max_length = 30, default=0)
+    good = models.IntegerField('好评', default=0)
+    bad = models.IntegerField('差评', default=0)
+
 
 
     def __unicode__(self):

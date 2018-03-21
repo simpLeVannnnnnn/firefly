@@ -40,8 +40,19 @@
             {% if request.user.is_authenticated %}
             <div class="nav navbar-nav navbar-right">
                 <ol class="breadcrumb user-info-padding">
+                    
+
+
+                    
                     <li><p class="user-info" >{{request.user.username}} </p></li>
-                    {% if request.user.is_superuser %}<li><a href="/upload/" class="user-info">上传文件</a></li>{% endif %}
+
+                    {% if request.user.is_superuser %}
+                    <li><p class="user-info" >管理员您好</p></li>
+                    {% endif %}
+                    {% if request.user.is_active %}
+                    <li><a href="/upload/" class="user-info">上传文件</a></li>
+                    <li><a href="/myupload/" class="user-info">管理我的上传</a></li>
+                    {% endif %}
                     <li><a href="/logout/" class="user-info">退出</a></li>
                    
                 </ol>

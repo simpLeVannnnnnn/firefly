@@ -40,6 +40,10 @@ INSTALLED_APPS = (
     #'django.contrib.sites',    
 
     'haystack',
+    'djcelery',
+    'kombu.transport.django',
+
+    'likes',
 
     'users',
     'upload',
@@ -96,8 +100,15 @@ DATABASES = {
     }
 }
 
-# HAYSTACK
+# django-celery
 
+import djcelery
+
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+
+
+# HAYSTACK
 
 HAYSTACK_CONNECTIONS = {
     'default': {

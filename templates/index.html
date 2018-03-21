@@ -14,9 +14,10 @@
         </div>
 
         <div class="col middle-column">
+
             <div class="panel panel-default">
                 <div class="panel-body">
-                        
+                    <div>
                         <ol class="breadcrumb">
                             {% if category %}<li><span>{{ category.name }}</span></li>{% endif %}
                             {% if tag %}<li ><span>{{ tag.name }} </span></li>{% endif %}
@@ -27,24 +28,30 @@
 
                     {% include 'file_list.html' %}
                     
-                    
+                    {% if files.paginator.num_pages > 1 %}
                     <div class="page-pagination">
                         <div class="pagination">
                             <span class="step-links">
-                                {% if files.has_previous %}
-                                    <a class="btn btn-default" href="?page={{ files.previous_page_number }}">前一页</a>
-                                {% endif %}
-                        
-                                <span class="current">
-                                    第 {{ files.number }} 页，共 {{ files.paginator.num_pages }}页.
-                                </span>
-                        
-                                {% if files.has_next %}
-                                    <a class="btn btn-default" href="?page={{ files.next_page_number }}">后一页</a>
-                                {% endif %}
+                                
+                                    {% if files.has_previous %}
+                                        <a class="btn btn-default" href="?page={{ files.previous_page_number }}">前一页</a>
+                                    {% endif %}
+                            
+                                    <span class="current">
+                                        第 {{ files.number }} 页，共 {{ files.paginator.num_pages }}页.
+                                    </span>
+                            
+                                    {% if files.has_next %}
+                                        <a class="btn btn-default" href="?page={{ files.next_page_number }}">后一页</a>
+                                    {% endif %}
+                               
                             </span>
                         </div>
                     </div>
+                    {% endif %}
+
+                </div>
+                
             </div>
         </div>
     </div>

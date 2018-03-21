@@ -1,0 +1,87 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="/static/css/file-detail2.css">
+</head>
+<body>
+<!--大框-->
+<div class="outward">
+    <!--左边-->
+  <div class="left">
+      <div class="sidbar">
+            {% if file.cover %}
+            <img src="{{ file.cover.url }}" alt="" class="app">
+            {% else %}
+            <img src="http://img.zcool.cn/community/01cf3655c8d56132f8755e66dcb76d.png@900w_1l_2o_100sh.jpg" alt="" class="app">
+            {% endif %}
+          
+          <ul class="soft_detl">
+              <li><span>分类：{{ file.category.name }}</span></li>
+              <li><span>厂商：{{ file.developer }}</span></li>
+              <li><span>语言：{{ file.language }}</span></li>
+              <li><span>更新时间：{{ file.updata_time|date:"Y-m-d" }}</span></li>
+          </ul>
+      </div>
+  </div>
+    <!--中间-->
+    <div class="center">
+        <h1>{{ file.title }}</h1>
+            <ul class="clearfix">
+                <li><span>系统综合评分:{{ file.score }}</span></li>
+                <li><span>文件大小:{{ file.size }} MB</span></li>
+                <li><span>下载次数:{{ file.amount_of_downloads }}</span></li>
+                <li><button name="likes" id="likes"><img src="/library/img/like1.jpg" id="turn_img">赞</img></button></li>
+                <li></li>
+            </ul>
+        
+        <div class="content">
+            <div class="introduce">
+                <span>软件介绍：{{ file.introduction }}</span>
+            </div>
+            <div id="download" class="download">
+                    <a href="/files/download/{{ file.id }}">下  载</a>
+                </div>
+            <div class="preview">
+                <span>预览：</span><br>
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        </div>
+        
+    </div>
+    <!--右边-->
+    <div class="left">
+        
+    </div>
+</div>
+
+
+</body>
+<script>    
+
+    ///download.click=function(){
+        //window.location.href="/files/download/{{ file.id }}";
+        //} 
+
+    var tag = true;
+    
+    $(document).ready(function(){
+      $("#likes").click(function(){
+        if (tag == true) {
+            $.post("/likes/likes_change?type=File&id={{ file.id }}&direct=1",
+            $('#turn_img').attr('src','/library/img/like2.jpg')
+            );
+        } else {
+            $.post("/likes/likes_change?type=File&id={{ file.id }}&direct=-1",
+            $('#turn_img').attr('src','/library/img/like1.jpg')
+            );
+        }
+        tag = !tag;
+      });
+    });
+</script>
+{% endblock %}

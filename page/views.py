@@ -1,9 +1,15 @@
-from django.shortcuts import render, get_object_or_404, render_to_response, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, render_to_response
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from files.models import File, Tag, Category
 
 
 def home(request):
+    if request.method == 'POST':
+        search_key = request.POST['search_key']
+        return HttpResponseRedirect('/search/?q=%s' % search_key)
+        
+ 
     files = File.objects.all()
     tags = Tag.objects.all()
 
@@ -35,6 +41,23 @@ def high_score(request):
         files = paginator.page(paginator.num_pages)
 
     return render(request, 'high_score.html', locals())
+
+def high_dow(request):
+
+    files = File.objects.order_by('-amount_of_downloads', 'title')
+    tags = Tag.objects.all()
+
+    paginator = Paginator(files, 5)
+    page = request.GET.get('page')
+    try:
+        files = paginator.page(page)
+    except PageNotAnInteger:
+        files = paginator.page(1)
+    except EmptyPage:
+        files = paginator.page(paginator.num_pages)
+
+    return render(request, 'high_dow.html', locals())
+
 
 
 def tag(request, tag_id):
@@ -131,3 +154,20 @@ def document(request):
     except EmptyPage:
         files = paginator.page(paginator.num_pages)
     return render(request, 'index.html', locals())
+
+
+def myupload(request):
+
+    files = File.objects.filter(author=request.user.username)
+
+    paginator = Paginator(files, 5)
+    page = request.GET.get('page')
+    try:
+        files = paginator.page(page)
+    except PageNotAnInteger:
+        files = paginator.page(1)
+    except EmptyPage:
+        files = paginator.page(paginator.num_pages)
+    return render(request, 'myupload.html', locals())
+
+    

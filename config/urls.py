@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^index/$', 'page.views.index'),
     url(r'^about/$', 'page.views.about'),
     url(r'^highscore/$', 'page.views.high_score'),
+    url(r'^highdow/$', 'page.views.high_dow'),
     url(r'^picture/$', 'page.views.picture'),
     url(r'^info/$', 'page.views.info'),
     url(r'^application/$', 'page.views.application'),
@@ -22,6 +23,8 @@ urlpatterns = [
     url(r'^files/',include('files.urls')),
     url(r'^tag/',include('page.urls')),
     url(r'^search/',include('search.urls')),
+    url(r'^likes/', include('likes.urls')),
+    url(r'^myupload/', 'page.views.myupload'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

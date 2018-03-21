@@ -1,3 +1,22 @@
+.col {
+    margin-right: 1%;
+    float: left;
+}
+
+.left-column {
+    width: 16%;
+    display: block;
+}
+
+.middle-column {
+    width: 77%;
+    left: 120px;
+    position: relative;
+
+}
+h3{
+    text-align:center;
+}
 .page-pagination {
     text-align:center;
     margin: 20px auto;

@@ -23,6 +23,7 @@
 
 <div id="works" class="grid ">
   {% for file in files  %}
+  <div>
 	<figure class="effect-oscar wowload ">
       <div class="file-score">
           <span class="glyphicon glyphicon-star">评分：{{ file.score }} </span>
@@ -38,12 +39,16 @@
           <a href="/files/{{ file.id }}"}>更多信息</a></p>            
       </figcaption>
     </figure>
+    {% if file.author = request.user.username or request.user.is_superuser %}
+    <div class="file-delete">
+        <a class="btn btn-danger" href="/files/delete/{{ file.id }}">删除 </a>
+    </div>
+    {% endif %}
+  
+  </div>
     
   {% endfor %}
 </div>
 
-
-
-</div>
 </body>
 </html>

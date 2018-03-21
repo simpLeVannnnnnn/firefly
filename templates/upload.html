@@ -18,8 +18,11 @@
             <h1>上传文件：
             <span>请填写详细内容</span>
             </h1>
+            {% if errors %}
+            <h5 class="text-danger"> {{ errors }} </h5>
+            {% endif %}
             
-            <form method="post" enctype="multipart/form-data"></form>
+            <form method="post" enctype="multipart/form-data">
                 <ul class="upload_ul">
                     
                     <li>
@@ -72,6 +75,7 @@
                     </li>
                 </ul>
             </form>
+            
         </div>
     </div>
 </body>

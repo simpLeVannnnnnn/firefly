@@ -9,9 +9,14 @@
 }
 
 .middle-column {
-    width: 66%;
+    width: 77%;
+
+
 }
 .page-pagination {
+    
+    left:0;
+    bottom:0;
     text-align:center;
-    margin: 20px auto;
+    margin: 20px;
 }

@@ -5,5 +5,6 @@ from files import views
 
 urlpatterns = patterns('',
     url(r'^(?P<file_id>\d+)', views.detail),
-    url(r'^download/(?P<file_id>\d+)',views.file_download)
+    url(r'^download/(?P<file_id>\d+)',views.file_download),
+    url(r'^delete/(?P<file_id>\d+)',views.file_delete),
 )
